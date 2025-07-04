@@ -265,7 +265,6 @@ test_yum() {
                     "almalinux:8" \
                     "amazonlinux:2023" \
                     "quay.io/centos/centos:stream9" \
-                    "quay.io/centos/centos:stream8" \
                     "centos:7"; do
         if ! docker run \
                --platform linux/x86_64 \
@@ -286,8 +285,7 @@ test_yum() {
                     "arm64v8/almalinux:9" \
                     "arm64v8/almalinux:8" \
                     "arm64v8/amazonlinux:2023" \
-                    "quay.io/centos/centos:stream9" \
-                    "quay.io/centos/centos:stream8"; do
+                    "quay.io/centos/centos:stream9"; do
         if ! docker run \
                --platform linux/arm64 \
                --rm \
@@ -894,7 +892,7 @@ test_linux_wheels() {
   fi
 
   local python_versions="${TEST_PYTHON_VERSIONS:-3.9 3.10 3.11 3.12 3.13}"
-  local platform_tags="${TEST_WHEEL_PLATFORM_TAGS:-manylinux2014_${arch}.manylinux_2_17_${arch} manylinux_2_28_${arch}}"
+  local platform_tags="${TEST_WHEEL_PLATFORM_TAGS:-manylinux_2_28_${arch}}"
 
   if [ "${SOURCE_KIND}" != "local" ]; then
     local wheel_content="OFF"
